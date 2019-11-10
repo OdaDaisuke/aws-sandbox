@@ -1,0 +1,19 @@
+- name: Install nginx
+  yum: name=nginx
+  yum: name=wget
+  yum: name=gcc
+  yum: name=make
+  yum: name=pcre-devel
+  yum: name=openssl-devel
+  yum: name=curl
+  - command: |
+    wget https://openresty.org/download/openresty-1.15.8.2.tar.gz
+    tar -xvf openresty-1.15.8.2.tar.gz
+    cd openresty-1.15.8.2
+    ./configure -j2
+    make -j2
+    sudo make install
+    export PATH=/usr/local/openresty/bin:$PATH
+- name: Start server.
+  - command: chkconfig nginx on
+  - command: service nginx restart

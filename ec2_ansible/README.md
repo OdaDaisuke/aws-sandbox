@@ -1,0 +1,1 @@
+ansibleでOpenRestyを立てたりして遊ぶ。
